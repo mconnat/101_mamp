@@ -1,0 +1,34 @@
+version: '2'
+services:
+  web:
+    image: keopx/apache-php:7.0
+    ports:
+      - "8008:80"
+    links:
+      - mysql
+    volumes:
+      - ./data/www:/var/www # Data.
+      - ./config/vhosts:/etc/apache2/sites-enabled
+      - ./config/php/7.0/php.ini:/etc/php/7.0/apache2/php.ini
+    working_dir: /var/www
+  mysql:
+    image: keopx/mysql:5.5
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/database:/var/lib/mysql
+      ## Custom setup for MySQL
+      # - ./config/mysql/my.cnf:/etc/mysql/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=testroot
+      - MYSQL_DATABASE=testdb
+      - MYSQL_USER=testuser
+      - MYSQL_PASSWORD=testpass
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    links:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
