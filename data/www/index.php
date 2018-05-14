@@ -1,1 +1,3 @@
-toto
+<?php
+phpinfo();
+?>

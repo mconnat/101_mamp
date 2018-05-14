@@ -7,18 +7,15 @@ services:
     links:
       - mysql
     volumes:
-      - ./data/www:/var/www # Data.
-      - ./config/vhosts:/etc/apache2/sites-enabled
+      - ./data/www:/var/www/html # Data.
       - ./config/php/7.0/php.ini:/etc/php/7.0/apache2/php.ini
-    working_dir: /var/www
+    working_dir: /var/www/html
   mysql:
     image: keopx/mysql:5.5
     ports:
       - "3306:3306"
     volumes:
       - ./data/database:/var/lib/mysql
-      ## Custom setup for MySQL
-      # - ./config/mysql/my.cnf:/etc/mysql/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=testroot
       - MYSQL_DATABASE=testdb
