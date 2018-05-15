@@ -9,7 +9,7 @@ Pourquoi ?
 Parce que c'est bien. Et puis aussi parce que c'est bien ! Vraiment bien ! Vraiment VRAIMENT bien !
 Docker compose va vous monter un environnement, isolé, de containers docker pour faire tourner les services requis.
 C'est très utile pour un environnement de dev, peu importe l'Os sur lequel vous allez travailler !
-Je vous invite à vous renseigner sur cette utilisation de docker, car il y a beaucoup d'autre cas d'utilisation ;)
+Je vous invite à vous renseigner sur cette techno, car il y a beaucoup d'autre cas d'utilisation ;)
 
 Pour notre utilisation, rien de sorcier, vous allez devoir tout simplement cloner ce repo et faire des modifications dans un fichier.
 
@@ -148,13 +148,13 @@ Il suffit d'être dans le dossier courant du `docker-compose.yml` et d'exécuter
 docker-compose up
 ```
 
-Vous pouvez même rajouter l'option `-d` pour lancer les services mode détachés.
+Vous pouvez même rajouter l'option `-d` pour lancer les services en mode détaché.
 
 Si vous avez décidé d'utiliser cette option, il vous faudra utiliser la commande `docker-compose stop` pour arrêter les services sinon un bon `Ctrl-C` des familles en mode non détaché.
 
 ### Dev
 
-Vous devrez donc mettre vos fichier `*.php.` dans le dossier que vous avez renseigné dans le `docker-compose.yml`. 
+Vous devrez donc mettre vos fichiers `*.php.` dans le dossier que vous avez renseigné dans le `docker-compose.yml`.
 Pour accéder au site, il faudra rentrer comme URL `http://localhost:8008` ou `http://zXrXpX.le-101.fr:8008` ou `http://0.0.0.0:8008` ou `http://10.X.X.X:8008` ou ...
 
 Il y a aussi un container PhpMyAdmin atteignable sur `http://localhost:8080` ou `http://0.0.0.0:8080` ou ...
