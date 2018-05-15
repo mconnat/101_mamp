@@ -70,9 +70,44 @@ services:
 
 Les seules lignes à modifier sont celles indiquées ci-dessus.
 
-La première modification est importante : elle indique où votre site se situe. Nous vous conseillons de le changer pour quelque chose du style `/Users/login/piscine-php/`.
+La première modification est importante : elle indique où votre site se situe. Nous vous conseillons de le changer pour quelque chose du style `/Users/login/piscine-php/MyWebSite`.
 
-La seconde modification concerne l'accès à votre base de données. À vos risques et périls.
+La seconde modification concerne l'accès à votre base de données. À votre discretion.
+
+Voici un exemple de configuration pour l'user `chmaubla`:
+```yaml
+version: '2'
+services:
+  web:
+    image: keopx/apache-php:7.0
+    ports:
+      - "8008:80"
+    links:
+      - mysql
+    volumes:
+      - /Users/chmaubla/piscine-php/MyWebSite:/var/www/html #                                à modifier
+      - ./config/php/7.0/php.ini:/etc/php/7.0/apache2/php.ini
+    working_dir: /var/www/html
+  mysql:
+    image: keopx/mysql:5.5
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./data/database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass  #                           à modifier
+      - MYSQL_DATABASE=mydb           #                          à modifier
+      - MYSQL_USER=chmaubla           #                           à modifier
+      - MYSQL_PASSWORD=mypassword     #                           à modifier
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    links:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+```
 
 # Utilisation
 
@@ -92,7 +127,8 @@ Si vous avez décidé d'utiliser cette option, il vous faudra utiliser la comman
 
 ### Dev
 
-Vous devrez donc bosser dans le dossier que vous avez renseigné dans le `docker-compose.yml` et pour accéder au site, il faudra rentrer comme URL `http://localhost:8008` ou `http://zXrXpX.le-101.fr:8008` ou `http://0.0.0.0:8008` ou `http://10.X.X.X:8008` ou ...
+Vous devrez donc mettre vos fichier `*.php.` dans le dossier que vous avez renseigné dans le `docker-compose.yml`. 
+Pour accéder au site, il faudra rentrer comme URL `http://localhost:8008` ou `http://zXrXpX.le-101.fr:8008` ou `http://0.0.0.0:8008` ou `http://10.X.X.X:8008` ou ...
 
 ### Problèmes ?
 
