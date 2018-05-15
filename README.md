@@ -2,14 +2,13 @@ Vous l’avez peut être remarqué, pour la piscine PHP, 42 utilise un soft du n
 
 Ici au **101**, nous allons tenter autre chose :
 
-## DOCKER
+### DOCKER
 
 Pourquoi ? Parce que c'est bien. Et puis aussi parce que c'est bien! Vraiment bien! Vraiment VRAIMENT bien!
 
 Pour cela, vous allez devoir tout simplement clôner un repo et faire 2/3 modifs toutes simples.
 
 # Installation
----
 
 Il vous faut d'abord clôner le repo suivant quelque part dans votre home :
 
@@ -70,11 +69,12 @@ services:
 ```
 
 Les seules lignes à modifier sont celles indiquées ci-dessus.
+
 La première modification est importante : elle indique où votre site se situe. Nous vous conseillons de le changer pour quelque chose du style `/Users/login/piscine-php/`.
+
 La seconde modification concerne l'accès à votre base de données. À vos risques et périls.
 
 # Utilisation
----
 
 Il faut, obviously, que vous alliez au préalable installer `Docker`, disponible dans tous les MSC du coin!
 
@@ -87,6 +87,7 @@ docker-compose up
 ```
 
 Vous pouvez même rajouter l'option `-d` pour lancer les services en tâche de fond.
+
 Si vous avez décidé d'utiliser cette option, il vous faudra utiliser la commande `docker-compose stop` pour arrêter les services.
 
 ### Dev
