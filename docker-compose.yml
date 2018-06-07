@@ -7,8 +7,10 @@ services:
     links:
       - mysql
     volumes:
-      - ./data/www:/var/www/html # Data.
+      - ./data/www/:/var/www/html
+      - ./config/vhosts:/etc/apache2/sites-enabled
       - ./config/php/7.0/php.ini:/etc/php/7.0/apache2/php.ini
+      - ./config/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
     working_dir: /var/www/html
   mysql:
     image: keopx/mysql:5.5
@@ -17,10 +19,10 @@ services:
     volumes:
       - ./data/database:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=testroot
-      - MYSQL_DATABASE=testdb
-      - MYSQL_USER=testuser
-      - MYSQL_PASSWORD=testpass
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=db_name
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=pass
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     ports:
@@ -29,3 +31,4 @@ services:
       - mysql
     environment:
       - PMA_HOST=mysql
+
