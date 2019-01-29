@@ -11,6 +11,7 @@ services:
       - ./config/vhosts:/etc/apache2/sites-enabled
       - ./config/php/7.0/php.ini:/etc/php/7.0/apache2/php.ini
       - ./config/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
+      - ./config/apache2:/etc/apache2
     working_dir: /var/www/html
   mysql:
     image: keopx/mysql:5.5
