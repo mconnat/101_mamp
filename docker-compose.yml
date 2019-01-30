@@ -13,6 +13,8 @@ services:
       - ./config/ssmtp/ssmtp.conf:/etc/ssmtp/ssmtp.conf
       - ./config/apache2:/etc/apache2
     working_dir: /var/www/html
+    environment:
+      - PHP_SENDMAIL_DOMAIN=mail-student.le-101.fr:25
   mysql:
     image: keopx/mysql:5.5
     ports:
